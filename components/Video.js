@@ -231,6 +231,9 @@ class Video extends Component {
           }
           KeepAwake.activate()
         } else {
+          if (this.props.fullScreenOnly && this.state.fullScreen)
+            this.toggleFS();
+
           KeepAwake.deactivate()
         }
       })
