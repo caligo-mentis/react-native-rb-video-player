@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
   ScrollView as RNScrollView
-} from 'react-native'
+} from 'react-navigation'
 
 class ScrollView extends Component {
   constructor(props) {
