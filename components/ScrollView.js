@@ -4,6 +4,9 @@ import {
   ScrollView as RNScrollView
 } from 'react-navigation'
 
+import Video from './Video';
+import { Container } from './Container';
+
 class ScrollView extends Component {
   constructor(props) {
     super(props)
@@ -37,21 +40,22 @@ class ScrollView extends Component {
 
   renderChildren(children) {
     return React.Children.map(children, (child, key) => {
-      const element = child.type.name
+      const element = child.type
+
       switch (true) {
-        case element === 'Container': {
+        case element === Container: {
           const props = this.state.fullscreen ? { style: {} } : child.props
           const components = React.Children.map(child.props.children, (component) => {
-            const { name } = component.type
-            if (name === 'Video') return this.cloneElement(component, key)
-            if (this.state.fullscreen && name !== 'Video') return null
+            const { type } = component
+            if (type === Video) return this.cloneElement(component, key)
+            if (this.state.fullscreen && type !== Video) return null
             return component
           })
           return React.cloneElement(child, props, components)
         }
-        case element === 'Video':
+        case element === Video:
           return this.cloneElement(child, key)
-        case (this.state.fullscreen && element !== 'Video'):
+        case (this.state.fullscreen && element !== Video):
           return null
         default:
           return child
