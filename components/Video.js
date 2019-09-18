@@ -216,7 +216,7 @@ class Video extends Component {
       Orientation.unlockAllOrientations();
 
       this.props.onPlay(!this.state.paused)
-      Orientation.getOrientation((e, orientation) => {
+      Orientation.getOrientation(orientation => {
         if (this.props.inlineOnly) return
         if (!this.state.paused) {
           if (this.props.fullScreenOnly && !this.state.fullScreen) {
@@ -242,7 +242,7 @@ class Video extends Component {
 
   toggleFS() {
     this.setState({ fullScreen: !this.state.fullScreen }, () => {
-      Orientation.getOrientation((e, orientation) => {
+      Orientation.getOrientation(orientation => {
         if (this.state.fullScreen) {
           const initialOrient = Orientation.getInitialOrientation()
           const height = orientation !== initialOrient ?
