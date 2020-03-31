@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {
-  ScrollView as RNScrollView
-} from 'react-navigation'
 
 import Video from './Video';
 import { Container } from './Container';
+
+import { ScrollView as RNScrollView } from 'react-native';
 
 class ScrollView extends Component {
   constructor(props) {
@@ -65,7 +64,6 @@ class ScrollView extends Component {
 
   render() {
     const { fullscreen } = this.state
-    const scrollViewRef = React.createRef();
 
     const {
       bounces,
@@ -77,7 +75,6 @@ class ScrollView extends Component {
     return (
       <RNScrollView
         {...scrollProps}
-        ref={scrollViewRef}
         bounces={fullscreen ? !fullscreen : bounces}
         onScroll={(event) => {
           if (!fullscreen) this.scrollPos = event.nativeEvent.contentOffset.y

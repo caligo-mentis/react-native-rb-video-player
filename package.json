@@ -43,7 +43,6 @@
     "react": "*",
     "react-native": "*",
     "react-native-video": "*",
-    "react-native-orientation-locker": "*",
-    "react-navigation": "*"
+    "react-native-orientation-locker": "*"
   }
 }
